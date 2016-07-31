@@ -1,0 +1,15 @@
+3:script.js
+0='Misc', 'School', 'Social', 'Work'
+#1=____ (must enter your own database id!!!)
+!
+9:styles.css
+0=ccc
+1=fff
+2=4a5
+3=fff
+4=eee
+5=c33
+6=e55
+7=45a
+8=56b
+!

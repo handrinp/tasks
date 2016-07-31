@@ -1,0 +1,5 @@
+# Do not remove this line, otherwise mod_rewrite rules will stop working
+RewriteBase /
+
+# New 404 page
+ErrorDocument 404 http://www.taskcity.tk/404.html

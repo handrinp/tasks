@@ -1,0 +1,224 @@
+html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,label,legend,p,blockquote,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}body{line-height:1;color:black;background:white;}:focus{outline:0;}table{border-collapse:collapse;border-spacing:0;}caption,th,td{text-align:left;font-weight:normal;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}ol,ul{list-style:none;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}abbr,acronym{border:0;}
+
+body {
+  background-color: #__0__;
+  position: relative;
+  font-family: sans-serif;
+}
+
+button {
+  color: #eee;
+  border: 1px solid #000;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+input[type=text], select {
+  text-align: center;
+  border: 1px solid #aaa;
+  width: 90%;
+}
+
+#headerRow div {
+  font-weight: bold;
+  color: #__1__;
+}
+
+#headerRow div {
+  background-color: #__2__;
+}
+
+.tableRow {
+  float: none;
+}
+
+.oddRow {
+  background-color: #__3__;
+}
+
+.evenRow {
+  background-color: #__4__;
+}
+
+.c1, .c2, .c3, .c4, .c4_d, .c4_m {
+  text-align: center;
+  float: left;
+}
+  
+.c2 span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+#cFull {
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.deleteButton {
+  background-color: #__5__;
+}
+
+.deleteButton:hover {
+  background-color: #__6__;
+}
+
+.addButton {
+  background-color: #__7__;
+}
+
+.addButton:hover {
+  background-color: #__8__;
+}
+
+.urgent {
+  color: #f00;
+}
+
+#scheduleTable p {
+  font-size: 18px;
+  padding: 3px;
+}
+
+#loadingSpinner {
+  margin: 0 auto;
+}
+
+/*********** DESKTOP STYLES ***********/
+@media only screen and (min-width: 700px) {
+  input[type=text], select {
+    line-height: 45px;
+    height: 45px;
+    padding: 0 10px;
+    margin: 0 -10px;
+  }
+  
+  .mobile {
+    display: none;
+  }
+  
+  #mainContent {
+    position: absolute;
+    margin-top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+  
+  #scheduleTable {
+    width: 600px;
+  }
+  
+  #headerRow div {
+    padding: 0 10px;
+    font-size: 1.25em;
+  }
+  
+  #lastRow {
+    margin-bottom: 50px;
+  }
+  
+  .tableRow, #headerRow {
+    height: 60px;
+    line-height: 60px;
+  }
+  
+  .c1, .c2, .c3, .c4 {
+    height: 60px;
+    padding: 0 10px;
+  }
+  
+  .c1 {
+    width: 100px;
+  }
+  
+  .c2 {
+    width: 240px;
+  }
+  
+  .c3 {
+    width: 110px;
+  }
+  
+  .c4 {
+    width: 70px;
+  }
+  
+  #cfull {
+    width: 600px;
+  }
+}
+
+/************ MOBILE STYLES ***********/
+@media only screen and (max-width: 699px) {
+  input[type=text], select {
+    line-height: 40px;
+    height: 40px;
+  }
+  
+  .desktop {
+    display: none;
+  }
+  
+  #mainContent, #scheduleTable, .tableRow, #headerRow {
+    width: 100%;
+  }
+  
+  #headerRow, #lastRow {
+    position: fixed;
+    box-shadow: 0 0 10px #444;
+  }
+  
+  #headerRow, #headerRow div, #lastRow, #lastRow div {
+    height: 60px;
+    line-height: 60px;
+  }
+  
+  #lastRow {
+    bottom: 0;
+  }
+  
+  #tableCells {
+    padding: 60px 0;
+  }
+  
+  #headerRow div {
+    padding: 0 5px;
+    font-size: 1em;
+  }
+  
+  .tableRow {
+    height: 90px;
+    line-height: 90px;
+  }
+  
+  .c1, .c2, .c3, .c4 {
+    height: 90px;
+    padding: 0 5px;
+  }
+  
+  .c1 {
+    width: calc(20% - 10px);
+  }
+  
+  .c2 {
+    width: calc(50% - 10px);
+    height: 90px;
+    line-height: 90px;
+  }
+  
+  .c3 {
+    width: calc(15% - 10px);
+  }
+  
+  .c4 {
+    width: calc(15% - 10px);
+  }
+  
+  #cfull {
+    width: 100%;
+  }
+}
