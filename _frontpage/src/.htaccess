@@ -3,3 +3,6 @@ RewriteBase /
 
 # New 404 page
 ErrorDocument 404 http://www.taskcity.tk/404.html
+
+# Don't index
+IndexIgnore *

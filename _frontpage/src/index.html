@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta charset="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
     <meta name="description" content="A website for saving and viewing tasks">
     <meta name="author" content="Nick Handrick">
+    <meta property="og:title" content="Task City">
+    <meta property="og:url" content="http://www.taskcity.tk/">
+    <meta property="og:description" content="A website for saving and viewing tasks">
+    <meta property="og:image" content="http://taskcity.tk/screenie.png">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta charset="utf-8" http-equiv="encoding">
     <title>taskcity.tk</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico">
   </head>
   <body>
@@ -30,8 +34,7 @@
             <p><span>&#9679; <a href="https://github.com/handrinp/tasks" target="new">open source</a> and completely free</span></p>
           </div>
           <div class="cp tableRow oddRow">
-            <p><span>
-              <a href="mailto:drezell47@gmail.com">email me</a>, and we'll get your account set up</span></p>
+            <p><span><a href="mailto:drezell47@gmail.com">email me</a>, and we'll get your account set up</span></p>
           </div>
         </div>
         <div id="lastRow" class="tableRow evenRow">
@@ -42,7 +45,7 @@
             <p>Login</p>
           </div>
           <div class="c2">
-            <input type="text" id="accountId"></input>
+            <input type="text" id="accountId">
           </div>
           <div class="c3">
             <button type="button" class="loginButton" onclick="login()">Go</button>
@@ -50,6 +53,6 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

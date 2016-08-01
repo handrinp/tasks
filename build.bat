@@ -14,14 +14,21 @@ echo ===========================================================
 
 :Clean
 echo -- Clean --------------------
-if exist %1\src\*.html del %1\src\*.html
-if exist %1\src\*.js del %1\src\*.js
-if exist %1\src\*.css del %1\src\*.css
 if exist %1\bin\* del %1\bin\* /q
-for /R _master %%f in (*.html) do copy %%f %1\src
-for /R _master %%f in (*.css) do copy %%f %1\src
-for /R _master %%f in (*.js) do copy %%f %1\src
 echo -- Clean --------------------
+echo.
+
+if [%1]==[_frontpage] goto Minify
+
+:Copy
+echo -- Copy ---------------------
+if exist %1\src\*.html del %1\src\*.html
+for /R _master %%f in (*.html) do copy %%f %1\src
+if exist %1\src\*.js del %1\src\*.js
+for /R _master %%f in (*.js) do copy %%f %1\src
+if exist %1\src\*.css del %1\src\*.css
+for /R _master %%f in (*.css) do copy %%f %1\src
+echo -- Copy ---------------------
 echo.
 
 :AutoBuild
@@ -29,6 +36,8 @@ echo -- AutoBuild ----------------
 java AutoBuild %1
 echo -- AutoBuild ----------------
 echo.
+
+:Minify
 echo -- Minify -------------------
 rd %1\bin /s /q
 echo d | xcopy %1\src %1\bin /s /y >NUL
@@ -40,5 +49,5 @@ echo -- Minify -------------------
 echo ===========================================================
 echo    WEBSITE BUILD COMPLETE
 echo ===========================================================
-:End
 color
+:End

@@ -1,4 +1,4 @@
-3:script.js
+2:script.js
 0='Misc', 'School', 'Social', 'Work'
 #1=____ (must enter your own database id!!!)
 !

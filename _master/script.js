@@ -120,22 +120,19 @@ function setJSON(dataString, innerFunc) {
 }
 
 function sortFunction(a, b) {
-  if (a.due == 0) {
-    return 1;
-  }
+  // different subjects
+  if (a.subject < b.subject) return -1;
+  if (a.subject > b.subject) return 1;
   
-  if (b.due == 0) {
-    return -1;
-  }
+  // same subject, but low priority
+  if (a.due == 0) return 1;
+  if (b.due == 0) return -1;
   
-  if (a.due > b.due) {
-    return 1;
-  }
+  // same subject, different due dates
+  if (a.due > b.due) return 1;
+  if (a.due < b.due) return -1;
   
-  if (a.due < b.due) {
-    return -1;
-  }
-  
+  // they're pretty much equal
   return 0;
 }
 
