@@ -3,61 +3,69 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
 body {
   background-color: #ccc;
   position: relative;
-  font-family: sans-serif
+  font-family: sans-serif;
 }
 
 button {
   color: #eee;
   border: 1px solid #000;
-  cursor: pointer
+  cursor: pointer;
 }
 
 input[type=text] {
   text-align: center;
-  border: 1px solid #aaa
+  border: 1px solid #aaa;
 }
 
 #headerRow div {
   font-weight: bold;
-  color: #fff
+  color: #fff;
 }
 
 #headerRow div {
-  background-color: #4a5
+  background-color: #4a5;
 }
 
 .cp span {
   display: inline-block;
   vertical-align: middle;
-  line-height: normal
+  line-height: normal;
 }
 
 #headerRow .errorRow {
-  background-color: #c33
+  background-color: #c33;
+}
+
+#headerRow .faqRow {
+  background-color: #45a;
 }
 
 .tableRow {
-  float: none
+  float: none;
 }
 
 .oddRow {
-  background-color: #fff
+  background-color: #fff;
 }
 
 .evenRow {
-  background-color: #eee
+  background-color: #eee;
+}
+
+#lastRow .cw {
+  text-align: center;
 }
 
 .loginButton {
-  background-color: #45a
+  background-color: #45a;
 }
 
 .loginButton: hover {
-  background-color: #56b
+  background-color: #56b;
 }
 
 #loadingSpinner {
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 /*********** DESKTOP STYLES ***********/
@@ -69,18 +77,18 @@ input[type=text] {
     width: 60%;
     display: block;
     margin: 6.5px auto;
-    font-size: 1.5em
+    font-size: 1.5em;
   }
   
   button {
     font-size: 1.25em;
     line-height: 45px;
     display: block;
-    margin: 6.5px auto
+    margin: 6.5px auto;
   }
   
   .mobile {
-    display: none
+    display: none;
   }
   
   #mainContent {
@@ -90,48 +98,48 @@ input[type=text] {
     transform: translate(-50%, 0%)
   }
   
-  #scheduleTable {
+  #scheduleTable, #noAfterTable {
     width: 600px;
-    font-size: 1.1em
+    font-size: 1.1em;
   }
   
   .cp {
     width: 560px;
     padding: 0 20px;
-    text-align: center
+    text-align: center;
   }
   
-  .c1,.c2,.c3 {
+  .c1, .c2, .c3 {
     float: left;
-    height: 60px
+    height: 60px;
   }
   
   .c1 {
     text-align: right;
     padding-right: 10px;
-    width: 290px
+    width: 290px;
   }
   
   .c2 {
-    width: 230px
+    width: 230px;
   }
   
   .c3 {
-    width: 70px
+    width: 70px;
   }
   
   #headerRow div {
     font-size: 1.75em;
-    text-align: center
+    text-align: center;
   }
   
   #lastRow {
-    margin-bottom: 50px
+    margin-bottom: 50px;
   }
   
-  .tableRow,#headerRow {
+  .tableRow, #headerRow {
     height: 60px;
-    line-height: 60px
+    line-height: 60px;
   }
 }
 
@@ -141,36 +149,36 @@ input[type=text] {
     line-height: 40px;
     height: 40px;
     width: 80%;
-    font-size: 1.25em
+    font-size: 1.25em;
   }
   
   button {
     font-size: 1.25em;
     line-height: 40px;
     display: block;
-    margin: 9px auto
+    margin: 9px auto;
   }
   
   .desktop {
-    display: none
+    display: none;
   }
   
-  #scheduleTable {
-    font-size: 1.1em
+  #scheduleTable, #noAfterTable {
+    font-size: 1.1em;
   }
   
-  #mainContent,#scheduleTable,.tableRow,#headerRow {
-    width: 100%
+  #mainContent, #scheduleTable, .tableRow, #headerRow {
+    width: 100%;
   }
   
-  #headerRow,#lastRow {
+  #headerRow, #lastRow {
     position: fixed;
-    box-shadow: 0 0 10px #444
+    box-shadow: 0 0 10px #444;
   }
   
-  #headerRow,#headerRow div,#lastRow,#lastRow div {
+  #headerRow, #headerRow div, #lastRow, #lastRow div {
     height: 60px;
-    line-height: 60px
+    line-height: 60px;
   }
   
   .cp {
@@ -178,44 +186,48 @@ input[type=text] {
     height: 90px;
     line-height: 90px;
     padding: 15px 10px;
-    width: calc(100% - 20px)
+    width: calc(100% - 20px);
   }
   
-  .c1,.c2,.c3 {
+  .c1, .c2, .c3 {
     float: left;
-    height: 60px
+    height: 60px;
   }
   
   .c1 {
     text-align: right;
     padding-right: 20px;
-    width: calc(35% - 20px)
+    width: calc(35% - 20px);
   }
   
   .c2 {
-    width: 45%
+    width: 45%;
   }
   
   .c3 {
-    width: 20%
+    width: 20%;
   }
   
   #lastRow {
-    bottom: 0
+    bottom: 0;
   }
   
   #tableCells {
-    padding: 60px 0
+    padding: 60px 0;
+  }
+  
+  #noAfterCells {
+    padding: 60px 0 0;
   }
   
   #headerRow div {
     padding: 0 5px;
     font-size: 1.5em;
-    text-align: center
+    text-align: center;
   }
   
   .tableRow {
     height: 60px;
-    line-height: 60px
+    line-height: 60px;
   }
 }
