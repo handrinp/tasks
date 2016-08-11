@@ -1,14 +1,6 @@
 # ignore users directory
 /u/
 
-# ignore generated source and minified files in test
-/_test/src/*.html
-/_test/src/*.css
-/_test/src/*.js
-/_test/bin/*.html
-/_test/bin/*.css
-/_test/bin/*.js
-
 # ignore AutoDeploy credentials :)
 cred.txt
 
