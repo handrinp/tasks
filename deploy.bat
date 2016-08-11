@@ -20,7 +20,7 @@ ftp -n -s:ftpcmd.dat www.taskcity.tk
 del ftpcmd.dat
 
 echo ===========================================================
-echo    WEBSITE DEPLOY COMPLETE
+echo     WEBSITE DEPLOY COMPLETE
 echo ===========================================================
 :End
 color

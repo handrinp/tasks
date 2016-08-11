@@ -47,7 +47,7 @@ call "C:\Program Files\nodejs\html-minifier.cmd" --case-sensitive --collapse-whi
 echo -- Minify -------------------
 
 echo ===========================================================
-echo    WEBSITE BUILD COMPLETE
+echo     WEBSITE BUILD COMPLETE
 echo ===========================================================
 color
 :End

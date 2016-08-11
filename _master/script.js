@@ -1,6 +1,9 @@
 'use strict';
 
+var ONE_WEEK = 604800000;
 var ONE_DAY = 86400000;
+var ONE_HOUR = 3600000;
+var ONE_MINUTE = 60000;
 var subjects = [__0__];
 var jsonUrl = 'https://api.myjson.com/bins/__1__';
 
@@ -18,23 +21,41 @@ function loadTasks() {
 
     for (var i = 0; i < obj.taskList.length; ++i) {
       var task = obj.taskList[i];
-      var daysLeft = "";
+      var timeString = "";
       var urgency = "";
       
       if (task.due != 0) {
-        var numDays = Math.ceil((task.due - new Date().getTime()) / ONE_DAY * 10)/10;
-        numDays = Math.max(numDays, 0);
+        var timeDelta = task.due - new Date().getTime();
         
-        if (numDays < 3) urgency = " urgent";
-        
-        daysLeft = numDays.toString();
+        if (timeDelta > 0) {
+          if (timeDelta < 2 * ONE_DAY) urgency = " urgent";
+          var numWeeks = Math.floor(timeDelta / ONE_WEEK);
+          if (numWeeks > 0) {
+            timeString += numWeeks + "w ";
+            timeDelta -= numWeeks * ONE_WEEK; 
+          }
+          var numDays = Math.floor(timeDelta / ONE_DAY);
+          if (numDays > 0) {
+            timeString += numDays + "d ";
+            timeDelta -= numDays * ONE_DAY;
+          }
+          var numHours = Math.floor(timeDelta / ONE_HOUR);
+          if (numHours > 0) {
+            timeString += numHours + "h ";
+          } else {
+            timeString = "<1h";
+          }
+        } else {
+          urgency = " urgent";
+          timeString = "LATE";
+        }
       }
       
       inner +=
           '<div class="tableRow ' + oddOrEven(i) + 'Row">' +
             '<div class="c1' + urgency + '">' + task.subject + '</div>' +
             '<div class="c2' + urgency + '"><span>' + task.task + '</span></div>' +
-            '<div class="c3' + urgency + '">' + daysLeft + '</div>' +
+            '<div class="c3' + urgency + '"><span>' + timeString.trim() + '</span></div>' +
             '<div class="c4">' +
               '<button type="button" class="deleteButton" onclick="deleteTask(\'' + task.taskid + '\');">X</button>' +
             '</div>' +

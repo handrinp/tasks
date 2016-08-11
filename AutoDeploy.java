@@ -35,11 +35,8 @@ public class AutoDeploy {
     oWriter.println(password);
     oWriter.println("binary");
     oWriter.println("cd public_html");
-    
-    if (!dirName.toLowerCase().equals("_frontpage")) {
-      oWriter.printf("mkdir %s%n", accountId);
-      oWriter.printf("cd %s%n", accountId);
-    }
+    oWriter.printf("mkdir %s%n", accountId);
+    oWriter.printf("cd %s%n", accountId);
     
     for (String fName : binFile.list()) {
       String fullName = String.format("%s%s%s%s%s", dirName, File.separator, "bin", File.separator, fName);

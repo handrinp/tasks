@@ -31,6 +31,11 @@ input[type=text] {
   vertical-align: middle;
   line-height: normal;
 }
+  
+.c1, .c2, .c3, .cl, .cr {
+  float: left;
+  height: 60px;
+}
 
 #headerRow .errorRow {
   background-color: #c33;
@@ -74,7 +79,7 @@ input[type=text] {
     line-height: 45px;
     height: 45px;
     padding: 0 10px;
-    width: 60%;
+    width: 80%;
     display: block;
     margin: 6.5px auto;
     font-size: 1.5em;
@@ -109,11 +114,6 @@ input[type=text] {
     text-align: center;
   }
   
-  .c1, .c2, .c3 {
-    float: left;
-    height: 60px;
-  }
-  
   .c1 {
     text-align: right;
     padding-right: 10px;
@@ -126,6 +126,16 @@ input[type=text] {
   
   .c3 {
     width: 70px;
+  }
+  
+  .cl {
+    text-align: right;
+    padding-right: 10px;
+    width: 180px;
+  }
+  
+  .cr {
+    width: 390px;
   }
   
   #headerRow div {
@@ -187,11 +197,6 @@ input[type=text] {
     line-height: 90px;
     padding: 15px 10px;
     width: calc(100% - 20px);
-  }
-  
-  .c1, .c2, .c3 {
-    float: left;
-    height: 60px;
   }
   
   .c1 {

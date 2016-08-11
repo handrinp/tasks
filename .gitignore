@@ -16,3 +16,6 @@
 
 # ignore AutoDeploy credentials :)
 cred.txt
+
+# ignore my buildAll
+/buildAll.bat

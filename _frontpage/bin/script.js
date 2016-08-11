@@ -1,5 +1,5 @@
 "use strict"
-function login(){var n=document.getElementById("accountId").value,e=window.location.pathname,t=e.substring(0,e.lastIndexOf("/"))
-window.location.href=t+"/"+n}document.getElementById("accountId").onkeypress=function(n){n||(n=window.event)
-var e=n.keyCode||n.which
-"13"==e&&login()}
+function login(){var n=document.getElementById("accountId").value,t=window.location.pathname,e=t.substring(0,t.lastIndexOf("/"))
+window.location.href=e+"/"+n}try{"undefined"!=typeof document.getElementById("accountId")&&(document.getElementById("accountId").onkeypress=function(n){n||(n=window.event)
+var t=n.keyCode||n.which
+"13"==t&&login()})}catch(n){}try{}catch(n){}
