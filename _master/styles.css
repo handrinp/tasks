@@ -2,12 +2,13 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
 
 body {
   background-color: #__0__;
+  color: #__10__;
   position: relative;
   font-family: sans-serif;
 }
 
 button {
-  color: #eee;
+  color: #__9__;
   border: 1px solid #000;
   padding: 10px;
   font-size: 16px;
@@ -75,8 +76,12 @@ div span {
   background-color: #__8__;
 }
 
+.tableRow {
+  box-shadow: __12__;
+}
+
 .urgent {
-  color: #f00;
+  color: #__11__;
 }
 
 #scheduleTable p {
@@ -169,7 +174,7 @@ div span {
   
   #headerRow, #lastRow {
     position: fixed;
-    box-shadow: 0 0 10px #444;
+    box-shadow: 0 0 10px #000;
   }
   
   #headerRow, #headerRow div, #lastRow, #lastRow div {

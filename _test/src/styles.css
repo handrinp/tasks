@@ -2,6 +2,7 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
 
 body {
   background-color: #ccc;
+  color: #000;
   position: relative;
   font-family: sans-serif;
 }
@@ -73,6 +74,10 @@ div span {
 
 .addButton:hover {
   background-color: #56b;
+}
+
+.tableRow {
+  box-shadow: 0 0 0 0 #000;
 }
 
 .urgent {
@@ -169,7 +174,7 @@ div span {
   
   #headerRow, #lastRow {
     position: fixed;
-    box-shadow: 0 0 10px #444;
+    box-shadow: 0 0 10px #000;
   }
   
   #headerRow, #headerRow div, #lastRow, #lastRow div {
