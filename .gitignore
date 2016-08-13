@@ -4,5 +4,5 @@
 # ignore AutoDeploy credentials :)
 cred.txt
 
-# ignore my buildAll
-/buildAll.bat
+# ignore my build/deploy files
+/make*.bat

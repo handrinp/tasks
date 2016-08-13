@@ -9,7 +9,7 @@ var jsonUrl = 'https://api.myjson.com/bins/3cpmp';
 
 function loadTasks() {
   $('#loadingSpinner').css('display', 'block');
-  
+
   getJSON(function(obj, textStatus, jqXHR) {
     var inner = '';
 
@@ -23,16 +23,16 @@ function loadTasks() {
       var task = obj.taskList[i];
       var timeString = "";
       var urgency = "";
-      
+
       if (task.due != 0) {
         var timeDelta = task.due - new Date().getTime();
-        
+
         if (timeDelta > 0) {
           if (timeDelta < 2 * ONE_DAY) urgency = " urgent";
           var numWeeks = Math.floor(timeDelta / ONE_WEEK);
           if (numWeeks > 0) {
             timeString += numWeeks + "w ";
-            timeDelta -= numWeeks * ONE_WEEK; 
+            timeDelta -= numWeeks * ONE_WEEK;
           }
           var numDays = Math.floor(timeDelta / ONE_DAY);
           if (numDays > 0) {
@@ -50,7 +50,7 @@ function loadTasks() {
           timeString = "LATE";
         }
       }
-      
+
       inner +=
           '<div class="tableRow ' + oddOrEven(i) + 'Row">' +
             '<div class="c1' + urgency + '">' + task.subject + '</div>' +
@@ -61,15 +61,15 @@ function loadTasks() {
             '</div>' +
           '</div>';
     }
-    
+
     document.getElementById('tableCells').innerHTML = inner;
     inner = '';
-    
+
     for (var i = 0; i < subjects.length; ++i) {
       inner +=
           '<option value = "' + subjects[i] + '">' + subjects[i] + '</option>';
     }
-    
+
     document.getElementById('subject').value = subjects[0];
     document.getElementById('task').value = '';
     document.getElementById('daysLeft').value = '';
@@ -83,7 +83,7 @@ function addTask() {
   getJSON(function(obj, textStatus, jqXHR) {
     var millis;
     var daysLeft = document.getElementById('daysLeft').value;
-    
+
     if (daysLeft == "") {
       millis = 0;
     } else {
@@ -91,7 +91,7 @@ function addTask() {
 
       if (!isNaN(days)) {
         millis = new Date().getTime() + days * ONE_DAY;
-      } 
+      }
     }
 
     var newObj = {
@@ -100,9 +100,9 @@ function addTask() {
       due : millis,
       taskid : '#' + Math.floor(Math.random() * 16777215).toString(16)
     };
-    
+
     obj.taskList.push(newObj);
-    
+
     setJSON(JSON.stringify(obj), function(data, textStatus, jqXHR) {
       loadTasks();
     });
@@ -118,7 +118,7 @@ function deleteTask(taskid) {
         tl.push(obj.taskList[i]);
       }
     }
-    
+
     setJSON(JSON.stringify({taskList : tl}), function(data, textStatus, jqXHR) {
       loadTasks();
     });
@@ -144,15 +144,15 @@ function sortFunction(a, b) {
   // different subjects
   if (a.subject < b.subject) return -1;
   if (a.subject > b.subject) return 1;
-  
+
   // same subject, but low priority
   if (a.due == 0) return 1;
   if (b.due == 0) return -1;
-  
+
   // same subject, different due dates
   if (a.due > b.due) return 1;
   if (a.due < b.due) return -1;
-  
+
   // they're pretty much equal
   return 0;
 }
