@@ -20,6 +20,8 @@ input[type=text], select {
   text-align: center;
   border: 1px solid #aaa;
   width: 90%;
+  background-color: #fff;
+  color: #000;
 }
 
 #headerRow div {
