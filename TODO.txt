@@ -6,10 +6,7 @@
 |                                 |
 |=================================|
 
-- Make button to show popup
-
-- Add post and close buttons to
-  popup
+- Add post button to popup
 
 - Add (weeks, days, hours) form to
   popup
@@ -17,6 +14,6 @@
 - Tweak form so it looks good on
   mobile
 
-- Make popup button functional
+- Make post button functional
 
 - 

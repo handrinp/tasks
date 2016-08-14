@@ -11,6 +11,21 @@ var subjects = ['Misc', 'School', 'Social', 'Work'];
 var jsonUrl  = 'https://api.myjson.com/bins/3cpmp';
 
 /***************************
+ * GUI FUNCTION
+ ***************************/
+
+function showPopUp() {
+  $('#popUnder').css('display', 'block');
+  $('#popUp').css('display', 'block');
+
+}
+
+function closePopUp() {
+  $('#popUnder').css('display', 'none');
+  $('#popUp').css('display', 'none');
+}
+
+/***************************
  * INIT FUNCTION
  ***************************/
 
@@ -38,20 +53,20 @@ function loadTasks() {
 
     for (var i = 0; i < obj.taskList.length; ++i) {
       var task = obj.taskList[i];
-      var timeString = "";
-      var urgency = "";
+      var timeString = '';
+      var urgency = '';
 
       if (task.due != 0) {
         var dateDue = new Date(task.due);
         var dateNow = new Date();
         var dateDif = new Date(dateDue.getTime() - dateNow.getTime());
         var diff = dateDif.getTime();
-        if (diff / ONE_DAY < 2) urgency = " urgent";
-        
+        if (diff / ONE_DAY < 2) urgency = ' urgent';
+
         if (diff < 0) {
-          timeString = "LATE";
+          timeString = 'LATE';
         } else if (diff / ONE_HOUR < 1) {
-          timeString = "<1h";
+          timeString = '<1h';
         } else {
           var timeString = getTimeString(diff);
         }
@@ -161,11 +176,11 @@ function getTimeString(diff) {
   var diffDays  = Math.floor(diff / ONE_DAY) % 7;
   var diffWeeks = Math.floor(diff / ONE_WEEK);
 
-  if (diffWeeks > 0) timeString += diffWeeks + "w ";
-  if (diffDays > 0) timeString += diffDays + "d ";
-  if (diffHours > 0) timeString += diffHours + "h";
+  if (diffWeeks > 0) timeString += diffWeeks + 'w ';
+  if (diffDays > 0) timeString += diffDays + 'd ';
+  if (diffHours > 0) timeString += diffHours + 'h';
 
-  return timeString.trim();
+  return timeString.trim().replace(/ /g, '<br>');
 }
 
 function sortFunction(a, b) {

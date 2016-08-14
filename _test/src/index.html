@@ -33,17 +33,21 @@
             <input type="text" id="task">
           </div>
           <div class="c3">
-            <input type="text" id="due">
+            <input type="text" id="due" class="desktop">
+            <button type="button" class="popUpButton" onclick="showPopUp()">&#9719;</button>
           </div>
           <div class="c4">
-            <button type='button' class='addButton' onclick='addTask()'>+</button>
+            <button type="button" class="addButton" onclick="addTask()">+</button>
           </div>
         </div>
       </div>
     </div>
     <div id="popUnder"></div>
     <div id="popUp">
-      <p>Ayyyyy lmao</p>
+      <div class="popUpRow"><button type="button" class="deleteButton" onclick="closePopUp()">X</button></div>
+      <div class="popUpRow">Row 1</div>
+      <div class="popUpRow">Row 2</div>
+      <div class="popUpRow">Row 3</div>
     </div>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
