@@ -4,6 +4,7 @@ var ONE_WEEK = 604800000;
 var ONE_DAY = 86400000;
 var ONE_HOUR = 3600000;
 var ONE_MINUTE = 60000;
+var EXTRA_TIME = ONE_MINUTE * 2;
 var subjects = [__0__];
 var jsonUrl = 'https://api.myjson.com/bins/__1__';
 
@@ -72,25 +73,24 @@ function loadTasks() {
 
     document.getElementById('subject').value = subjects[0];
     document.getElementById('task').value = '';
-    document.getElementById('daysLeft').value = '';
+    document.getElementById('due').value = '';
     document.getElementById('subject').innerHTML = inner;
     document.getElementById('lastRow').className = 'tableRow ' + oddOrEven(obj.taskList.length) + 'Row';
     $('#loadingSpinner').css('display', 'none');
   });
 }
-
 function addTask() {
   getJSON(function(obj, textStatus, jqXHR) {
     var millis;
-    var daysLeft = document.getElementById('daysLeft').value;
+    var dueValue = document.getElementById('due').value;
 
-    if (daysLeft == "") {
+    if (dueValue == "") {
       millis = 0;
     } else {
-      var days = Number(daysLeft);
+      var days = Number(dueValue);
 
       if (!isNaN(days)) {
-        millis = new Date().getTime() + days * ONE_DAY;
+        millis = new Date().getTime() + EXTRA_TIME + days * ONE_DAY;
       }
     }
 
@@ -108,7 +108,6 @@ function addTask() {
     });
   });
 }
-
 function deleteTask(taskid) {
   getJSON(function(obj, textStatus, jqXHR) {
     var tl = [];
@@ -124,11 +123,9 @@ function deleteTask(taskid) {
     });
   });
 }
-
 function getJSON(innerFunc) {
   $.get(jsonUrl, innerFunc);
 }
-
 function setJSON(dataString, innerFunc) {
   $.ajax({
     url: jsonUrl,
@@ -139,7 +136,6 @@ function setJSON(dataString, innerFunc) {
     success: innerFunc
   });
 }
-
 function sortFunction(a, b) {
   // different subjects
   if (a.subject < b.subject) return -1;
@@ -156,14 +152,9 @@ function sortFunction(a, b) {
   // they're pretty much equal
   return 0;
 }
-
 function oddOrEven(val) {
   return val % 2 == 0 ? 'odd' : 'even';
 }
-
-document.getElementById('task').onkeypress = keyPressed;
-document.getElementById('daysLeft').onkeypress = keyPressed;
-
 function keyPressed(e) {
   if (!e) e = window.event;
   var keyCode = e.keyCode || e.which;
@@ -171,7 +162,8 @@ function keyPressed(e) {
     addTask();
   }
 }
-
 $('document').ready(function() {
+  document.getElementById('task').onkeypress = keyPressed;
+  document.getElementById('due').onkeypress = keyPressed;
   loadTasks();
 });
