@@ -79,6 +79,7 @@ function loadTasks() {
     $('#loadingSpinner').css('display', 'none');
   });
 }
+
 function addTask() {
   getJSON(function(obj, textStatus, jqXHR) {
     var millis;
@@ -108,6 +109,7 @@ function addTask() {
     });
   });
 }
+
 function deleteTask(taskid) {
   getJSON(function(obj, textStatus, jqXHR) {
     var tl = [];
@@ -123,9 +125,11 @@ function deleteTask(taskid) {
     });
   });
 }
+
 function getJSON(innerFunc) {
   $.get(jsonUrl, innerFunc);
 }
+
 function setJSON(dataString, innerFunc) {
   $.ajax({
     url: jsonUrl,
@@ -136,6 +140,7 @@ function setJSON(dataString, innerFunc) {
     success: innerFunc
   });
 }
+
 function sortFunction(a, b) {
   // different subjects
   if (a.subject < b.subject) return -1;
@@ -152,9 +157,11 @@ function sortFunction(a, b) {
   // they're pretty much equal
   return 0;
 }
+
 function oddOrEven(val) {
   return val % 2 == 0 ? 'odd' : 'even';
 }
+
 function keyPressed(e) {
   if (!e) e = window.event;
   var keyCode = e.keyCode || e.which;
@@ -162,6 +169,7 @@ function keyPressed(e) {
     addTask();
   }
 }
+
 $('document').ready(function() {
   document.getElementById('task').onkeypress = keyPressed;
   document.getElementById('due').onkeypress = keyPressed;
