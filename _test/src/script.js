@@ -1,10 +1,28 @@
 'use strict';
 
+/***************************
+ * GLOBAL VARS
+ ***************************/
+
 var ONE_HOUR = 3600000;
 var ONE_DAY  = 86400000;
 var ONE_WEEK = 604800000;
 var subjects = ['Misc', 'School', 'Social', 'Work'];
 var jsonUrl  = 'https://api.myjson.com/bins/3cpmp';
+
+/***************************
+ * INIT FUNCTION
+ ***************************/
+
+$('document').ready(function() {
+  document.getElementById('task').onkeypress = keyPressed;
+  document.getElementById('due').onkeypress = keyPressed;
+  loadTasks();
+});
+
+/***************************
+ * TASK FUNCTIONS
+ ***************************/
 
 function loadTasks() {
   $('#loadingSpinner').css('display', 'block');
@@ -67,20 +85,6 @@ function loadTasks() {
   });
 }
 
-function getTimeString(diff) {
-  var timeString = "";
-
-  var diffHours = Math.floor(diff / ONE_HOUR) % 24;
-  var diffDays  = Math.floor(diff / ONE_DAY) % 7;
-  var diffWeeks = Math.floor(diff / ONE_WEEK);
-
-  if (diffWeeks > 0) timeString += diffWeeks + "w ";
-  if (diffDays > 0) timeString += diffDays + "d ";
-  if (diffHours > 0) timeString += diffHours + "h";
-
-  return timeString.trim();
-}
-
 function addTask() {
   getJSON(function(obj, textStatus, jqXHR) {
     var millis;
@@ -127,6 +131,10 @@ function deleteTask(taskid) {
   });
 }
 
+/***************************
+ * AJAX FUNCTIONS
+ ***************************/
+
 function getJSON(innerFunc) {
   $.get(jsonUrl, innerFunc);
 }
@@ -140,6 +148,24 @@ function setJSON(dataString, innerFunc) {
     dataType: 'json',
     success: innerFunc
   });
+}
+
+/***************************
+ * HELPER FUNCTIONS
+ ***************************/
+
+function getTimeString(diff) {
+  var timeString = "";
+
+  var diffHours = Math.floor(diff / ONE_HOUR) % 24;
+  var diffDays  = Math.floor(diff / ONE_DAY) % 7;
+  var diffWeeks = Math.floor(diff / ONE_WEEK);
+
+  if (diffWeeks > 0) timeString += diffWeeks + "w ";
+  if (diffDays > 0) timeString += diffDays + "d ";
+  if (diffHours > 0) timeString += diffHours + "h";
+
+  return timeString.trim();
 }
 
 function sortFunction(a, b) {
@@ -170,9 +196,3 @@ function keyPressed(e) {
     addTask();
   }
 }
-
-$('document').ready(function() {
-  document.getElementById('task').onkeypress = keyPressed;
-  document.getElementById('due').onkeypress = keyPressed;
-  loadTasks();
-});

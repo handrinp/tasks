@@ -95,9 +95,25 @@ div span {
   margin: 0 auto;
 }
 
-#popUp {
+#popUnder {
+  /**
   display: none;
-  background-color: #ddd;
+  **/
+  background-color: #000;
+  z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+#popUp {
+  /**
+  display: none;
+  **/
+  background-color: #ccc;
   box-shadow: 0 0 50px #000;
   z-index: 100;
   position: fixed;
