@@ -1,0 +1,27 @@
+|=================================|
+|      _____ ___  ___   ___       |
+|     |_   _/ _ \|   \ / _ \      |
+|       | || (_) | |) | (_) |     |
+|       |_| \___/|___/ \___/      |
+|                                 |
+|=================================|
+
+- Fix due date
+
+- Make popup look good
+
+- Tweak popup to look good on
+  mobile
+
+- Add (weeks, days, hours) forms
+  to popup
+
+- Add post and close buttons to
+  popup
+
+- Tweak form so it looks good on
+  mobile
+
+- Make popup button functional
+
+- 

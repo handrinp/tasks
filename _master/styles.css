@@ -95,6 +95,18 @@ div span {
   margin: 0 auto;
 }
 
+#popUp {
+  display: none;
+  background-color: #ddd;
+  box-shadow: 0 0 50px #000;
+  z-index: 100;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 /*********** DESKTOP STYLES ***********/
 @media only screen and (min-width: 700px) {
   input[type=text], select {
@@ -156,6 +168,12 @@ div span {
 
   #cfull {
     width: 600px;
+  }
+  
+  #popUp {
+    width: 400px;
+    height: 300px;
+    line-height: 300px;
   }
 }
 
@@ -227,5 +245,11 @@ div span {
 
   #cfull {
     width: 100%;
+  }
+  
+  #popUp {
+    width: 300px;
+    height: 400px;
+    line-height: 400px;
   }
 }
