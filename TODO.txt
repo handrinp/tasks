@@ -6,8 +6,6 @@
 |                                 |
 |=================================|
 
-- Fix due date
-
 - Make popup look good
 
 - Tweak popup to look good on

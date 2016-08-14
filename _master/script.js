@@ -1,12 +1,28 @@
 'use strict';
 
-var ONE_WEEK = 604800000;
-var ONE_DAY = 86400000;
+/***************************
+ * GLOBAL VARS
+ ***************************/
+
 var ONE_HOUR = 3600000;
-var ONE_MINUTE = 60000;
-var EXTRA_TIME = ONE_MINUTE * 2;
+var ONE_DAY  = 86400000;
+var ONE_WEEK = 604800000;
 var subjects = [__0__];
-var jsonUrl = 'https://api.myjson.com/bins/__1__';
+var jsonUrl  = 'https://api.myjson.com/bins/__1__';
+
+/***************************
+ * INIT FUNCTION
+ ***************************/
+
+$('document').ready(function() {
+  document.getElementById('task').onkeypress = keyPressed;
+  document.getElementById('due').onkeypress = keyPressed;
+  loadTasks();
+});
+
+/***************************
+ * TASK FUNCTIONS
+ ***************************/
 
 function loadTasks() {
   $('#loadingSpinner').css('display', 'block');
@@ -26,29 +42,18 @@ function loadTasks() {
       var urgency = "";
 
       if (task.due != 0) {
-        var timeDelta = task.due - new Date().getTime();
-
-        if (timeDelta > 0) {
-          if (timeDelta < 2 * ONE_DAY) urgency = " urgent";
-          var numWeeks = Math.floor(timeDelta / ONE_WEEK);
-          if (numWeeks > 0) {
-            timeString += numWeeks + "w ";
-            timeDelta -= numWeeks * ONE_WEEK;
-          }
-          var numDays = Math.floor(timeDelta / ONE_DAY);
-          if (numDays > 0) {
-            timeString += numDays + "d ";
-            timeDelta -= numDays * ONE_DAY;
-          }
-          var numHours = Math.floor(timeDelta / ONE_HOUR);
-          if (numHours > 0) {
-            timeString += numHours + "h ";
-          } else {
-            timeString = "<1h";
-          }
-        } else {
-          urgency = " urgent";
+        var dateDue = new Date(task.due);
+        var dateNow = new Date();
+        var dateDif = new Date(dateDue.getTime() - dateNow.getTime());
+        var diff = dateDif.getTime();
+        if (diff / ONE_DAY < 2) urgency = " urgent";
+        
+        if (diff < 0) {
           timeString = "LATE";
+        } else if (diff / ONE_HOUR < 1) {
+          timeString = "<1h";
+        } else {
+          var timeString = getTimeString(diff);
         }
       }
 
@@ -56,7 +61,7 @@ function loadTasks() {
           '<div class="tableRow ' + oddOrEven(i) + 'Row">' +
             '<div class="c1' + urgency + '">' + task.subject + '</div>' +
             '<div class="c2' + urgency + '"><span>' + task.task + '</span></div>' +
-            '<div class="c3' + urgency + '"><span>' + timeString.trim() + '</span></div>' +
+            '<div class="c3' + urgency + '"><span>' + timeString + '</span></div>' +
             '<div class="c4">' +
               '<button type="button" class="deleteButton" onclick="deleteTask(\'' + task.taskid + '\');">X</button>' +
             '</div>' +
@@ -91,7 +96,7 @@ function addTask() {
       var days = Number(dueValue);
 
       if (!isNaN(days)) {
-        millis = new Date().getTime() + EXTRA_TIME + days * ONE_DAY;
+        millis = new Date().getTime() + days * ONE_DAY;
       }
     }
 
@@ -126,6 +131,10 @@ function deleteTask(taskid) {
   });
 }
 
+/***************************
+ * AJAX FUNCTIONS
+ ***************************/
+
 function getJSON(innerFunc) {
   $.get(jsonUrl, innerFunc);
 }
@@ -139,6 +148,24 @@ function setJSON(dataString, innerFunc) {
     dataType: 'json',
     success: innerFunc
   });
+}
+
+/***************************
+ * HELPER FUNCTIONS
+ ***************************/
+
+function getTimeString(diff) {
+  var timeString = "";
+
+  var diffHours = Math.floor(diff / ONE_HOUR) % 24;
+  var diffDays  = Math.floor(diff / ONE_DAY) % 7;
+  var diffWeeks = Math.floor(diff / ONE_WEEK);
+
+  if (diffWeeks > 0) timeString += diffWeeks + "w ";
+  if (diffDays > 0) timeString += diffDays + "d ";
+  if (diffHours > 0) timeString += diffHours + "h";
+
+  return timeString.trim();
 }
 
 function sortFunction(a, b) {
@@ -169,9 +196,3 @@ function keyPressed(e) {
     addTask();
   }
 }
-
-$('document').ready(function() {
-  document.getElementById('task').onkeypress = keyPressed;
-  document.getElementById('due').onkeypress = keyPressed;
-  loadTasks();
-});
