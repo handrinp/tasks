@@ -67,19 +67,11 @@ div span {
   background-color: #__6__;
 }
 
-.popUpButton {
+.popUpButton, .addButton, .submitPopUpButton {
   background-color: #__7__;
 }
 
-.popUpButton:hover {
-  background-color: #__8__;
-}
-
-.addButton {
-  background-color: #__7__;
-}
-
-.addButton:hover {
+.popUpButton:hover, .addButton:hover, .submitPopUpButton:hover {
   background-color: #__8__;
 }
 
@@ -204,7 +196,7 @@ div span {
   #popUp {
     width: 550px;
     height: 400px;
-    line-height: 60px;
+    line-height: 80px;
   }
 }
 
@@ -221,7 +213,7 @@ div span {
     line-height: 16px;
   }
 
-  .addButton, .popUpButton {
+  .addButton, .popUpButton, .closePopUpButton {
     font-size: 24px;
   }
 
@@ -290,7 +282,7 @@ div span {
 
   #popUp {
     width: 260px;
-    height: 280px;
-    line-height: 90px;
+    height: 380px;
+    line-height: 76px;
   }
 }

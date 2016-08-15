@@ -78,7 +78,7 @@ function loadTasks() {
             '<div class="c2' + urgency + '"><span>' + task.task + '</span></div>' +
             '<div class="c3' + urgency + '"><span>' + timeString + '</span></div>' +
             '<div class="c4">' +
-              '<button type="button" class="deleteButton" onclick="deleteTask(\'' + task.taskid + '\');">X</button>' +
+              '<button type="button" class="deleteButton" onclick="deleteTask(\'' + task.taskid + '\');">&#x2717;</button>' +
             '</div>' +
           '</div>';
     }
@@ -170,16 +170,18 @@ function setJSON(dataString, innerFunc) {
  ***************************/
 
 function getTimeString(diff) {
-  var timeString = "";
-
+  // calculate the hours, days, weeks
   var diffHours = Math.floor(diff / ONE_HOUR) % 24;
   var diffDays  = Math.floor(diff / ONE_DAY) % 7;
   var diffWeeks = Math.floor(diff / ONE_WEEK);
 
+  // build the time string
+  var timeString = "";
   if (diffWeeks > 0) timeString += diffWeeks + 'w ';
   if (diffDays > 0) timeString += diffDays + 'd ';
   if (diffHours > 0) timeString += diffHours + 'h';
 
+  // put line breaks in between time units
   return timeString.trim().replace(/ /g, '<br>');
 }
 
