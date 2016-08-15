@@ -36,7 +36,34 @@ function closePopUp() {
 }
 
 function submitPopUp() {
-  
+  var validated = true;
+
+  validated &= validate('formMonth');
+  validated &= validate('formDay');
+  validated &= validate('formTime');
+
+  if (validated) {
+    var dateString =
+        document.getElementById('formMonth').value + " " +
+        document.getElementById('formDay').value + ", " +
+        document.getElementById('formYear').value + " " +
+        document.getElementById('formTime').value;
+
+    var dateObj = new Date(dateString);
+    var numDays = (dateObj.getTime() - new Date().getTime()) / ONE_DAY;
+    document.getElementById('due').value = numDays;
+    closePopUp();
+  }
+}
+
+function validate(formId) {
+  var dom = document.getElementById(formId);
+  if (dom.value == 0) {
+    dom.style.border = '1px solid #f00';
+    return false;
+  }
+  dom.style.border = '';
+  return true;
 }
 
 /***************************
@@ -101,6 +128,7 @@ function loadTasks() {
     document.getElementById('subject').innerHTML = inner;
     document.getElementById('lastRow').className = 'tableRow ' + oddOrEven(obj.taskList.length) + 'Row';
     $('#loadingSpinner').css('display', 'none');
+    clearForms();
   });
 }
 
@@ -172,6 +200,16 @@ function setJSON(dataString, innerFunc) {
 /***************************
  * HELPER FUNCTIONS
  ***************************/
+
+function clearForms() {
+  document.getElementById('formYear').selectedIndex = 0;
+  document.getElementById('formMonth').selectedIndex = 0;
+  document.getElementById('formDay').selectedIndex = 0;
+  document.getElementById('formTime').selectedIndex = 0;
+  document.getElementById('subject').selectedIndex = 0;
+  document.getElementById('task').value = '';
+  document.getElementById('due').value = '';
+}
 
 function getTimeString(diff) {
   // calculate the hours, days, weeks

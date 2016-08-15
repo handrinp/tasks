@@ -6,6 +6,4 @@
 |                                 |
 |=================================|
 
-- Make accept button functional
-
 - 
