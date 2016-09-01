@@ -8,6 +8,7 @@ var ONE_HOUR = 3600000;
 var ONE_DAY  = 86400000;
 var ONE_WEEK = 604800000;
 var subjects = [__0__];
+var currentDueValue;
 var jsonUrl  = 'https://api.myjson.com/bins/__1__';
 
 /***************************
@@ -16,7 +17,6 @@ var jsonUrl  = 'https://api.myjson.com/bins/__1__';
 
 $('document').ready(function() {
   document.getElementById('task').onkeypress = keyPressed;
-  document.getElementById('due').onkeypress = keyPressed;
   loadTasks();
 });
 
@@ -51,7 +51,7 @@ function submitPopUp() {
 
     var dateObj = new Date(dateString);
     var numDays = (dateObj.getTime() - new Date().getTime()) / ONE_DAY;
-    document.getElementById('due').value = numDays;
+    currentDueValue = numDays;
     closePopUp();
   }
 }
@@ -124,7 +124,7 @@ function loadTasks() {
 
     document.getElementById('subject').value = subjects[0];
     document.getElementById('task').value = '';
-    document.getElementById('due').value = '';
+    currentDueValue = '';
     document.getElementById('subject').innerHTML = inner;
     document.getElementById('lastRow').className = 'tableRow ' + oddOrEven(obj.taskList.length) + 'Row';
     $('#loadingSpinner').css('display', 'none');
@@ -135,7 +135,7 @@ function loadTasks() {
 function addTask() {
   getJSON(function(obj, textStatus, jqXHR) {
     var millis;
-    var dueValue = document.getElementById('due').value;
+    var dueValue = currentDueValue;
 
     if (dueValue == "") {
       millis = 0;
@@ -208,7 +208,7 @@ function clearForms() {
   document.getElementById('formTime').selectedIndex = 0;
   document.getElementById('subject').selectedIndex = 0;
   document.getElementById('task').value = '';
-  document.getElementById('due').value = '';
+  currentDueValue = '';
 }
 
 function getTimeString(diff) {

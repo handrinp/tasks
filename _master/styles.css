@@ -126,7 +126,7 @@ div span {
   }
 
   button {
-    padding: 6px;
+    padding: 8px;
     font-size: 16px;
     line-height: 16px;
   }
@@ -170,11 +170,11 @@ div span {
   }
 
   .c2 {
-    width: 240px;
+    width: 260px;
   }
 
   .c3 {
-    width: 110px;
+    width: 90px;
   }
 
   .c4 {
@@ -183,10 +183,6 @@ div span {
 
   #due {
     width: 50px;
-  }
-
-  .popUpButton {
-    margin-left: 10px;
   }
 
   #cfull {
