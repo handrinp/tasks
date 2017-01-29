@@ -6,3 +6,7 @@ cred.txt
 
 # ignore my build/deploy files
 /make*.bat
+
+# ignore npm modules
+/.git/
+/node_modules/

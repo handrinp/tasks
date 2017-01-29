@@ -41,9 +41,9 @@ echo.
 echo -- Minify -------------------
 rd %1\bin /s /q
 echo d | xcopy %1\src %1\bin /s /y >NUL
-call "C:\Program Files\nodejs\minify.cmd" --output "%1\bin\script.js" "%1\src\script.js"
-call "C:\Program Files\nodejs\minify.cmd" --output "%1\bin\styles.css" "%1\src\styles.css"
-call "C:\Program Files\nodejs\html-minifier.cmd" --case-sensitive --collapse-whitespace --html5 --quote-character \" --remove-comments --remove-script-type-attributes --remove-style-link-type-attributes --input-dir "%1\src" --output-dir "%1\bin" --file-ext "html"
+call "node_modules\.bin\minify.cmd" --output "%1\bin\script.js" "%1\src\script.js"
+call "node_modules\.bin\minify.cmd" --output "%1\bin\styles.css" "%1\src\styles.css"
+call "node_modules\.bin\html-minifier.cmd" --case-sensitive --collapse-whitespace --html5 --quote-character \" --remove-comments --remove-script-type-attributes --remove-style-link-type-attributes --input-dir "%1\src" --output-dir "%1\bin" --file-ext "html"
 echo -- Minify -------------------
 
 echo ===========================================================
