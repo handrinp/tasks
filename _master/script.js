@@ -27,7 +27,6 @@ $('document').ready(function() {
 function showPopUp() {
   $('#popUnder').css('display', 'block');
   $('#popUp').css('display', 'block');
-
 }
 
 function closePopUp() {
@@ -58,10 +57,12 @@ function submitPopUp() {
 
 function validate(formId) {
   var dom = document.getElementById(formId);
+
   if (dom.value == 0) {
     dom.style.border = '1px solid #f00';
     return false;
   }
+
   dom.style.border = '';
   return true;
 }
